@@ -1,5 +1,8 @@
 const collection={
-    Admin:"Admin"
+    Admin:"Admin",
+    Category:"Category",
+    SubCategory:"SubCategory",
+    Product:"Product"
 }
 
 
