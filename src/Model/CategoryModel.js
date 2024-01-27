@@ -1,11 +1,12 @@
+require('../Config/db');
 const mongoose=require('mongoose');
 const collection = require('../Config/collection');
-require('../Config/db');
+
 
 const CategorySchema=new mongoose.Schema({
-    name:{typeof:String,require:[true,"Name is require"]},
-    slug:{typeof:String},
-    category_id:{typeof:String}
+    name:{type:String,required:[true,"Name is require"],unique:true},
+    title:{type:String},
+    category_name:{type:String}
 },{
     timestamps:true
 })
@@ -13,3 +14,4 @@ const CategorySchema=new mongoose.Schema({
 const CategoryModule=mongoose.model(collection.Category,CategorySchema)
 
 module.exports=CategoryModule
+

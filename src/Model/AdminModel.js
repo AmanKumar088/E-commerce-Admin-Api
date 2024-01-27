@@ -5,10 +5,12 @@ require('../Config/db')
 
 
 const AdminSchema=new mongoose.Schema({
-    name:String,
-    email:String,
+    name:{type:String,required:[true,"Name is require"]},
+    email:{type:String,required:[true,"Email is require"],unique:true},
     phone:Number,
     password:String
+},{
+    timestamps:true
 })
 
 AdminSchema.pre('save',function(){

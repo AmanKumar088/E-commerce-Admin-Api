@@ -1,4 +1,4 @@
-const AdminModule = require("../Module/AdminModule");
+const AdminModule = require("../Model/AdminModel");
 const { decoded } = require("../Utils/Utils");
 
 exports.AdminSignup=async(request,response,next)=>{
@@ -39,10 +39,9 @@ exports.AdminLogin=async (request,response)=>{
         const data={
             email:bodyData.email
         }
-
         const res=await AdminModule.findOne(data)
         if(res){
-            if(decoded(bodyData.password,res.password,)){
+            if(decoded(bodyData.password,res.password)){
                     response.json({
                         status:"success",
                         message:"admin login successfully"
@@ -68,3 +67,15 @@ exports.AdminLogin=async (request,response)=>{
     }
 }
 
+
+exports.AdminForgetPassword=async (request,response)=>{
+    try{
+        
+    }catch(error){
+        response.json({
+            status:"failed",
+            message:"invailed details",
+            error:error
+        })
+    }
+}
