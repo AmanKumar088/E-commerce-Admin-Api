@@ -4,7 +4,6 @@ const collection = require('../Config/collection');
 
 
 const CategorySchema=new mongoose.Schema({
-    name:{type:String,required:[true,"Name is require"],unique:true},
     title:{type:String},
     category_name:{type:String}
 },{

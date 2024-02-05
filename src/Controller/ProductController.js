@@ -19,8 +19,9 @@ exports.AddProduct = async (request, response) => {
             sub_category_name: bodyData.sub_category_name,
             product_name: bodyData.product_name
         }
-        console.log(image)
+        
         const res = await ProductModel.create(AddData)
+        console.log(image)
         if (res) {
             response.json({
                 status: "success",
@@ -28,7 +29,7 @@ exports.AddProduct = async (request, response) => {
                 data: res
             })
         }
-    } catch (error) {
+    } catch (error){
         response.json({
             status: "failed",
             message: "invailed",
@@ -41,7 +42,7 @@ exports.AddProduct = async (request, response) => {
 exports.SingleProduct = async (request, response) => {
     try {
         const id = request.params.id;
-        const res = await ProductModel.find({ _id: id })
+        const res = await ProductModel.findOne({ _id: id })
         res.product_img = `http://localhost:200/uploadImages/${res.product_img}`
         if (res) {
             response.json({
@@ -120,8 +121,11 @@ exports.DeleteProduct = async (request, response) => {
 
 exports.GetAllProduct = async (request, response) => {
     try {
-        const res = await ProductModel.find();
-        if (res) {
+        let res = await ProductModel.find();
+        res= res.map((value)=>{value.product_img=`http://localhost:200/uploadImages/${value.product_img}`
+        return value
+    })
+        if (res){
             response.json({
                 status: "success",
                 message: "GetAllProduct Successfully",

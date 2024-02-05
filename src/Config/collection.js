@@ -2,7 +2,8 @@ const collection={
     Admin:"Admin",
     Category:"Category",
     SubCategory:"SubCategory",
-    Product:"Product"
+    Product:"Product",
+    add_to_cart:"AddToCart"
 }
 
 

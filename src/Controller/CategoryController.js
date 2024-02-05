@@ -5,11 +5,9 @@ exports.AddCategory=async (request,response)=>{
     try{
         const bodyData=request.body
         const Data={
-            name:bodyData.name,
             title:bodyData.title,
             category_name:bodyData.category_name
         }
-
         const ww=await CategoryModule.create(Data)
         if(ww){
             response.json({
@@ -19,6 +17,7 @@ exports.AddCategory=async (request,response)=>{
             })
         }
     }catch(error){
+        console.log(error)
         response.json({
             status:"falied",
             message:"falied",
@@ -51,7 +50,7 @@ exports.GetAllCategory=async (request,response)=>{
 exports.SingleCategory=async (request,response)=>{
     try{
         const id=request.params.id
-        const res=await CategoryModule.findOne({category_id:id})
+        const res=await CategoryModule.findOne({_id:id})
         if(res){
             response.json({
                 status:"success",
@@ -74,11 +73,10 @@ exports.UpdateCategory=async (request,response)=>{
         const id=request.params.id
         const bodyData=request.body;
         const query={
-            name:bodyData.name,
             title:bodyData.title,
             category_name:bodyData.category_name
         }
-        const res=await CategoryModule.updateOne({category_id:id},query)
+        const res=await CategoryModule.updateOne({_id:id},query)
         if(res){
             response.json({
                 status:"success",
@@ -99,7 +97,7 @@ exports.UpdateCategory=async (request,response)=>{
 exports.DeleteCategory=async (resquest,response)=>{
     try{
         const id=resquest.params.id
-        const res=await CategoryModule.deleteOne({category_id:id})
+        const res=await CategoryModule.deleteOne({_id:id})
         if(res){
             response.json({
                 status:"success",

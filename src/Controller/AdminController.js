@@ -44,7 +44,8 @@ exports.AdminLogin=async (request,response)=>{
             if(decoded(bodyData.password,res.password)){
                     response.json({
                         status:"success",
-                        message:"admin login successfully"
+                        message:"admin login successfully",
+                        user_id:res._id
                     })
             }else{
                 response.json({

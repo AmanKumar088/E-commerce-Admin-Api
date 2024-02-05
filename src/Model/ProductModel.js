@@ -4,18 +4,19 @@ const collection = require('../Config/collection');
 
 
 const ProductSchema=new mongoose.Schema({
-    brand_name:{type:String,required:[true,"Name is require"],unique:true},
+    brand_name:{type:String,required:[true,"Name is require"]},
     model_number:String,
     operation_version:String,
     cellular_technology:String,
-    product_price:{type:String},
-    product_color:{type:String},
-    product_highlight:{type:String},
-    product_description:{type:String},
-    product_rating:{type:String},
-    sub_category_name:{type:String},
-    product_name:{type:String},
-    product_img:{type:String}
+    product_price:String,
+    product_color:String,
+    product_highlight:String,
+    product_description:String,
+    product_rating:String,
+    category_name:String,
+    sub_category_name:String,
+    product_name:String,
+    product_img:String
 },{
     timestamps:true
 })

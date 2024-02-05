@@ -29,7 +29,7 @@ exports.AddSubCategory=async (request,response)=>{
 exports.SingleSubCategory=async (request,response)=>{
     try{
         const id=request.params.id
-        const res=await SubCategoryModule.find({sub_category_id:id}) 
+        const res=await SubCategoryModule.find({_id:id}) 
         if(res){
             response.json({
                 status:"success",
@@ -56,7 +56,7 @@ exports.UpdateSubCategory=async (request,response)=>{
             sub_category_name:bodyData.sub_category_name
         }
 
-        const res=await SubCategoryModule.updateOne({sub_category_id:id},updateData)
+        const res=await SubCategoryModule.updateOne({_id:id},updateData)
         if(res){
             response.json({
                 status:"success",
@@ -77,7 +77,7 @@ exports.UpdateSubCategory=async (request,response)=>{
 exports.DeleteSubCategory=async (request,response)=>{
     try{
         const id=request.params.id;
-        const res=await SubCategoryModule.deleteOne({sub_category_id:id});
+        const res=await SubCategoryModule.deleteOne({_id:id});
         if(res){
             response.json({
                 status:"success",
