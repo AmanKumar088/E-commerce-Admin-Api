@@ -16,6 +16,7 @@ const ProductSchema=new mongoose.Schema({
     category_name:String,
     sub_category_name:String,
     product_name:String,
+    product_quantity:Number,
     product_img:String
 },{
     timestamps:true

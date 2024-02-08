@@ -17,6 +17,7 @@ exports.AddProduct = async (request, response) => {
             product_description: bodyData.product_description,
             product_rating: bodyData.product_rating,
             sub_category_name: bodyData.sub_category_name,
+            product_quantity:bodyData.product_quantity,
             product_name: bodyData.product_name
         }
         

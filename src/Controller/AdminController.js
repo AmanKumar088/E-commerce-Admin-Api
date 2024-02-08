@@ -1,5 +1,7 @@
 const AdminModule = require("../Model/AdminModel");
-const { decoded } = require("../Utils/Utils");
+const { decoded, tokenTime } = require("../Utils/Utils");
+const jwt=require('jsonwebtoken')
+require("dotenv").config();
 
 exports.AdminSignup=async(request,response,next)=>{
     try{
@@ -42,10 +44,25 @@ exports.AdminLogin=async (request,response)=>{
         const res=await AdminModule.findOne(data)
         if(res){
             if(decoded(bodyData.password,res.password)){
+                const bindKey={
+                    time:Date(),
+                    user_id:res._id,
+                    name:res.name,
+                    email:res.email,
+                    phone:res.phone
+                }
+            const SecretKey=process.env.SECRET_KEY
+            const token=jwt.sign(bindKey,SecretKey,tokenTime())
                     response.json({
                         status:"success",
+                        token:token,
+                        data:{
+                            name:res.name,
+                            email:res.email,
+                            phone:res.phone,
+                            user_id:res._id
+                        },
                         message:"admin login successfully",
-                        user_id:res._id
                     })
             }else{
                 response.json({
