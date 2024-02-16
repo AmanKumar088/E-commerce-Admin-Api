@@ -56,11 +56,11 @@ exports.AdminLogin=async (request,response)=>{
                     response.json({
                         status:"success",
                         token:token,
+                        user_id:res._id,
                         data:{
                             name:res.name,
                             email:res.email,
-                            phone:res.phone,
-                            user_id:res._id
+                            phone:res.phone
                         },
                         message:"admin login successfully",
                     })
