@@ -3,7 +3,8 @@ const collection={
     Category:"Category",
     SubCategory:"SubCategory",
     Product:"Product",
-    add_to_cart:"AddToCart"
+    add_to_cart:"AddToCart",
+    placeOrder:"PlaceOrder"
 }
 
 

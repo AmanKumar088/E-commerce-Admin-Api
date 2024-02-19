@@ -8,7 +8,7 @@ CartRoute.use(AdminMiddleWare)
 
 CartRoute.post('/addcart',AddCartController)
 CartRoute.get('/joincart',CartJoinController)
-CartRoute.delete('/delete',DeleteCart)
+CartRoute.delete('/delete/:id',DeleteCart)
 
 
 module.exports=CartRoute

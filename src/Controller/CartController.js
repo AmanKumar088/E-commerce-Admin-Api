@@ -43,17 +43,16 @@ exports.AddCartController = async (request, response) => {
 
 exports.DeleteCart = async (request, response) => {
     try {
-        const id = request.params._id;
-
-        const ee = await CartModel.deleteOne({ _id: id })
-        if (ee) {
+        const id = request.params.id;
+        const ee = await CartModel.deleteOne({ _id:new ObjectId(id) })
+        if(ee){
             response.json({
                 status: "success",
                 message: "delete cart successfully",
                 data: ee
             })
         }
-    } catch (error) {
+    }catch (error){
         response.json({
             status: "failed",
             message: "invailed",
@@ -65,8 +64,6 @@ exports.DeleteCart = async (request, response) => {
 exports.CartJoinController = async (request, response) => {
 
     try {
-
-        
         const res = await CartModel.aggregate([{ $match: { user_id: new ObjectId(request.id) } },
         {
             $lookup: {
