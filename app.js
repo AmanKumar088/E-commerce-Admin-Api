@@ -3,11 +3,19 @@ const AdminRoute = require('./src/Route/AdminRoute')
 const CategoryRoute = require('./src/Route/CategoryRoute')
 const SubCategoryRoute = require('./src/Route/SubCategoryRoute')
 const ProductRoute = require('./src/Route/ProductRoute')
-const app=express()
-const cors=require('cors')
 const CartRoute = require('./src/Route/CartRoute')
+const cors=require('cors')
+const path=require('path')
+const app=express()
+
+
 app.use(express.json())
 app.use(cors())
+
+// ejs [embedded javascript templating]
+
+app.set('views', path.join(__dirname,'src/Views'))
+app.set('view engine','ejs')
 
 
 
