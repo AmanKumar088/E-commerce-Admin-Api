@@ -1,4 +1,5 @@
 require('../Config/db')
+const { ObjectId } = require('mongodb')
 const collection=require('../Config/collection')
 const mongoose=require('mongoose')
 
@@ -8,11 +9,13 @@ const PlaceOrderSchema=new mongoose.Schema({
         ref:"Customer", 
         required: true 
       },
-      products: [{ 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-        required: true 
-      }],
+      products: {
+        product_id:ObjectId
+      },
+      address:{
+        address:{type:String},
+        pincode:{type:Number}
+      },
       total:{ 
         type: Number, 
         required: true 
