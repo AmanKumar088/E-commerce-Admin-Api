@@ -13,7 +13,6 @@ exports.AddCartController = async (request, response) => {
         const dataFind = await CartModel.findOne({ $and: [{ user_id: productData.user_id }, { product_id: productData.product_id }] })
      
         if (dataFind) {
-            console.log(dataFind.product_quantity)
             const updateone = await CartModel.updateOne({ _id: dataFind._id },{product_quantity:productData.product_quantity})
             response.json({
                 status: "success",
@@ -68,18 +67,19 @@ exports.CartJoinController = async (request, response) => {
         {
             $lookup: {
                 from: "products",
-                localField: "product_id",
-                foreignField: "_id",
-                as: "cartDetails"
+                localField:"product_id",
+                foreignField:"_id",
+                as:"cartDetails"
             }
-        }, { $project: { user_id: 0, _id: 0 } }
+        }, { $project: { user_id: 0} }
         ])
 
         if (res) {
+            console.log(res)
             response.json({
                 status: "success",
                 message: "cart join successfully",
-                data: res
+                data:res
             })
         }
 

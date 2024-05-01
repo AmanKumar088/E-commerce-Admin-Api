@@ -1,7 +1,7 @@
 require('../Config/db')
 const mongoose=require('mongoose');
 const collection = require('../Config/collection');
-
+``
 
 const ProductSchema=new mongoose.Schema({
     brand_name:{type:String,required:[true,"Name is require"]},

@@ -143,18 +143,16 @@ exports.GetAllProduct = async (request, response) => {
 }
 
 
-exports.UploadImgProduct = async function (request, response) {
+
+exports.TemplateImage = async (request, response) => {
     try {
-        const user_id = request.id;
-        const imagePath = request.body
-        const res = await ProductModel.updateOne({ _id: new ObjectId(user_id) }, { product_img: imagePath })
-        if (res) {
-            response.json({
-                status: "success",
-                message: "upload image successfully",
-                data: res
-            })
-        }
+        let res = await ProductModel.find();
+        res= res.map((value)=>{value.product_img=`http://localhost:200/uploadImages/${value.product_img}`
+        return value
+    })
+
+    response.render('ViewTemplate',{product:res})
+       
     } catch (error) {
         response.json({
             status: "failed",

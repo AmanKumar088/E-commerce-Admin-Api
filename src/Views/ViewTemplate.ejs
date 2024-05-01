@@ -5,5 +5,15 @@
     </head>
     <body>
         <h1>ejs template</h1>
+
+        <%
+        product.map(value=>{
+            %>
+            <h1><%=value.brand_name%></h1>
+            <img src="<%=value.product_img%>" width="100" height="100">
+            <p><%=value.product_price%></p>
+            <%
+        })
+        %>
     </body>
 </html>

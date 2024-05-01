@@ -25,7 +25,8 @@ app.use('/subcategory',SubCategoryRoute)
 app.use('/product',ProductRoute)
 app.use('/cart',CartRoute)
 
-app.use("/images",express.static(__dirname+"/public/image"))
+// app.use("/images",express.static(__dirname+"/public/image"))
+
 app.use("/uploadImages",express.static(__dirname+"/public/upload"))
 
 
